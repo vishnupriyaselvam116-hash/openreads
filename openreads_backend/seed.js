@@ -4,9 +4,7 @@ const User = require('./models/User');
 
 async function seed() {
   try {
-    const uri = 'mongodb://openreads:vishnu%402004@ac-vw3lxne-shard-00-00.hrrsjha.mongodb.net:27017,ac-vw3lxne-shard-00-01.hrrsjha.mongodb.net:27017,ac-vw3lxne-shard-00-02.hrrsjha.mongodb.net:27017/openreads?ssl=true&authSource=admin&retryWrites=true&w=majority';
-    
-    await mongoose.connect(uri, {
+    await mongoose.connect(process.env.MONGO_URI, {
       serverSelectionTimeoutMS: 30000,
       family: 4,
     });
@@ -22,8 +20,6 @@ async function seed() {
         role: 'admin',
       });
       console.log('✅ Admin created successfully!');
-      console.log('   Email   :', process.env.ADMIN_EMAIL);
-      console.log('   Password:', process.env.ADMIN_PASSWORD);
     } else {
       console.log('ℹ️  Admin already exists. Skipping.');
     }

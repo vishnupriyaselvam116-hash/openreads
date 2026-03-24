@@ -27,10 +27,8 @@ app.use((err, req, res, next) => {
   res.status(500).json({ success: false, message: 'Internal server error' });
 });
 
-const DIRECT_URI = 'mongodb://openreads:vishnu%402004@ac-vw3lxne-shard-00-00.hrrsjha.mongodb.net:27017,ac-vw3lxne-shard-00-01.hrrsjha.mongodb.net:27017,ac-vw3lxne-shard-00-02.hrrsjha.mongodb.net:27017/openreads?ssl=true&authSource=admin&retryWrites=true&w=majority';
-
 mongoose
-  .connect(DIRECT_URI, {
+  .connect(process.env.MONGO_URI, {
     serverSelectionTimeoutMS: 30000,
     family: 4,
   })
