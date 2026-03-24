@@ -17,7 +17,6 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
   static const Color _amber  = Color(0xFFE8A338);
   static const Color _cream  = Color(0xFFF2EDE6);
   static const Color _muted  = Color(0xFF6B6B7A);
-  static const Color _sage   = Color(0xFF4A8C7E);
 
   final List<String> _categories = [
     'All', 'Fiction', 'Romance', 'Mystery',
@@ -49,7 +48,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
     setState(() => _loading = true);
     try {
       final token = await AuthService.getSavedToken();
-      String url = '${kBaseUrl}/books?limit=20';
+      String url = '$kBaseUrl/books?limit=20';
       if (category != null && category != 'All') url += '&category=$category';
       if (search != null && search.isNotEmpty) url += '&search=$search';
 
@@ -288,7 +287,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                     border: Border.all(
                       color: isSelected
                           ? _amber
-                          : _muted.withOpacity(0.2),
+                          : _muted.withValues(alpha: 0.2),
                     ),
                   ),
                   child: Text(
@@ -342,7 +341,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
               child: Column(
                 children: [
                   Icon(Icons.menu_book_rounded,
-                      size: 48, color: _muted.withOpacity(0.5)),
+                      size: 48, color: _muted.withValues(alpha: 0.5)),
                   const SizedBox(height: 12),
                   Text(
                     'No books found',
@@ -399,7 +398,7 @@ class _FeaturedBookCard extends StatelessWidget {
           Container(
             width: 120,
             decoration: BoxDecoration(
-              color: _amber.withOpacity(0.15),
+              color: _amber.withValues(alpha: 0.15),
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(16),
                 bottomLeft: Radius.circular(16),
@@ -439,7 +438,7 @@ class _FeaturedBookCard extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 8, vertical: 3),
                     decoration: BoxDecoration(
-                      color: _amber.withOpacity(0.15),
+                      color: _amber.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: Text(
@@ -498,7 +497,7 @@ class _FeaturedBookCard extends StatelessWidget {
                               horizontal: 8, vertical: 3),
                           decoration: BoxDecoration(
                             color: const Color(0xFF4A8C7E)
-                                .withOpacity(0.15),
+                                .withValues(alpha: 0.15),
                             borderRadius: BorderRadius.circular(6),
                           ),
                           child: Text(
@@ -546,7 +545,7 @@ class _BookCard extends StatelessWidget {
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(
-                color: _amber.withOpacity(0.1),
+                color: _amber.withValues(alpha: 0.1),
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(14),
                   topRight: Radius.circular(14),

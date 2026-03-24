@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'services/auth_service.dart';
 import 'screens/auth/role_select_screen.dart';
-import 'screens/auth/login_screen.dart';
 import 'screens/user/user_home_screen.dart';
 import 'screens/author/author_home_screen.dart';
 
@@ -20,8 +19,8 @@ class OpenReadsApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
-        colorScheme: ColorScheme.dark(
-          primary: const Color(0xFFE8A338),
+        colorScheme: const ColorScheme.dark(
+          primary: Color(0xFFE8A338),
         ),
         textTheme: GoogleFonts.latoTextTheme(ThemeData.dark().textTheme),
       ),

@@ -138,10 +138,10 @@ class _AddBookScreenState extends State<AddBookScreen> {
                     width: double.infinity,
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF4A8C7E).withOpacity(0.1),
+                      color: const Color(0xFF4A8C7E).withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
-                          color: const Color(0xFF4A8C7E).withOpacity(0.3)),
+                          color: const Color(0xFF4A8C7E).withValues(alpha: 0.3)),
                     ),
                     child: Row(
                       children: [
@@ -166,10 +166,10 @@ class _AddBookScreenState extends State<AddBookScreen> {
                     width: double.infinity,
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFCC4E2A).withOpacity(0.1),
+                      color: const Color(0xFFCC4E2A).withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
-                          color: const Color(0xFFCC4E2A).withOpacity(0.3)),
+                          color: const Color(0xFFCC4E2A).withValues(alpha: 0.3)),
                     ),
                     child: Row(
                       children: [
@@ -189,7 +189,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
                 ],
 
                 // Title
-                _Label('Book Title *'),
+                const _Label('Book Title *'),
                 const SizedBox(height: 8),
                 _Field(
                   controller: _titleCtrl,
@@ -201,7 +201,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
                 const SizedBox(height: 20),
 
                 // Description
-                _Label('Description *'),
+                const _Label('Description *'),
                 const SizedBox(height: 8),
                 TextFormField(
                   controller: _descCtrl,
@@ -233,7 +233,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
                 const SizedBox(height: 20),
 
                 // Category
-                _Label('Category *'),
+                const _Label('Category *'),
                 const SizedBox(height: 8),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 14),
@@ -263,7 +263,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
                 const SizedBox(height: 20),
 
                 // Cover Image URL
-                _Label('Cover Image URL (optional)'),
+                const _Label('Cover Image URL (optional)'),
                 const SizedBox(height: 8),
                 _Field(
                   controller: _coverCtrl,
@@ -273,7 +273,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
                 const SizedBox(height: 20),
 
                 // File URL
-                _Label('Book File URL (optional)'),
+                const _Label('Book File URL (optional)'),
                 const SizedBox(height: 8),
                 _Field(
                   controller: _fileCtrl,
@@ -315,7 +315,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
                         value: _isPaid,
                         onChanged: (val) =>
                             setState(() => _isPaid = val),
-                        activeColor: _amber,
+                        activeThumbColor: _amber,
                       ),
                     ],
                   ),
@@ -324,7 +324,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
                 // Price field
                 if (_isPaid) ...[
                   const SizedBox(height: 20),
-                  _Label('Price (₹) *'),
+                  const _Label('Price (₹) *'),
                   const SizedBox(height: 8),
                   _Field(
                     controller: _priceCtrl,
@@ -351,7 +351,7 @@ class _AddBookScreenState extends State<AddBookScreen> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: _amber,
                       foregroundColor: Colors.white,
-                      disabledBackgroundColor: _amber.withOpacity(0.5),
+                      disabledBackgroundColor: _amber.withValues(alpha: 0.5),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(14)),
                       elevation: 0,
@@ -363,9 +363,9 @@ class _AddBookScreenState extends State<AddBookScreen> {
                             child: CircularProgressIndicator(
                                 strokeWidth: 2, color: Colors.white),
                           )
-                        : Text(
+                        : const Text(
                             'Submit for Approval',
-                            style: GoogleFonts.lato(
+                            style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700),
                           ),
@@ -404,7 +404,6 @@ class _Field extends StatelessWidget {
   final TextEditingController controller;
   final String hint;
   final IconData icon;
-  final bool obscure;
   final TextInputType? keyboardType;
   final String? Function(String?)? validator;
 
@@ -418,7 +417,6 @@ class _Field extends StatelessWidget {
     required this.controller,
     required this.hint,
     required this.icon,
-    this.obscure = false,
     this.keyboardType,
     this.validator,
   });
@@ -427,7 +425,6 @@ class _Field extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      obscureText: obscure,
       keyboardType: keyboardType,
       validator: validator,
       style: GoogleFonts.lato(fontSize: 14, color: _cream),
