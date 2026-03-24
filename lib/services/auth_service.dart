@@ -2,7 +2,12 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-const String kBaseUrl = 'https://openreads-backend.onrender.com/api';
+// ✅ LOCAL TESTING — Flutter Web use pannum pothu
+const String kBaseUrl = 'http://localhost:5000/api';
+
+// 🌐 PRODUCTION (Render deploy ready-a irundha, ippa comment pannidu)
+// const String kBaseUrl = 'https://openreads-backend.onrender.com/api';
+
 class AuthResult {
   final bool success;
   final String message;
